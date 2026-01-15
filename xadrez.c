@@ -26,5 +26,24 @@ int main() {
         printf("Esquerda\n");
     }
 
+    // Cavalo move 2 vezes para cima e uma para direita.
+    // Utiliza laços for e while aninhados.
+    printf("\nCavalo:\n");
+    for (int v = 0; v < 3; v++) {
+        // Movimento vertical
+        if (v < 2) {
+            printf("Baixo, ");
+            continue;
+        }
+
+        // Movimento horizontal
+        int h = 0;
+        while (h < 1) {
+            printf("Direita\n");
+            h++;
+            break; // Sai do loop após o movimento lateral
+        }
+    }
+
     return 0;
 }
