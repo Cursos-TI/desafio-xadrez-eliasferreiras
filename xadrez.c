@@ -1,30 +1,21 @@
 #include <stdio.h>
 
+void move_torre(int casas, char direcao[]);
+void move_bispo(int casas, char direcaov[], char direcaoh[]);
+void move_rainha(int casas, char direcao[]);
+
 int main() {
     // Torre move 5 vezes para a direita.
-    // Utiliza laço while.
-    int t = 0;
     printf("\nTorre:\n");
-    while (t < 5) {
-        printf("Direita\n");
-        t++;
-    }
+    move_torre(5, "Direita");
 
     // Bispo move 5 vezes na diagonal cima direita.
-    // Utiliza laço do while.
-    int b = 0;
     printf("\nBispo:\n");
-    do {
-        printf("Cima, Direita\n");
-        b++;
-    } while (b < 5);
+    move_bispo(5, "Cima", "Direita");
 
     // Rainha move 8 vezes para a esquerda.
-    // Utiliza laço for.
     printf("\nRainha:\n");
-    for (int i = 0; i < 8; i++) {
-        printf("Esquerda\n");
-    }
+    move_rainha(8, "Esquerda");
 
     // Cavalo move 2 vezes para cima e uma para direita.
     // Utiliza laços for e while aninhados.
@@ -32,7 +23,7 @@ int main() {
     for (int v = 0; v < 3; v++) {
         // Movimento vertical
         if (v < 2) {
-            printf("Baixo, ");
+            printf("Cima, ");
             continue;
         }
 
@@ -46,4 +37,32 @@ int main() {
     }
 
     return 0;
+}
+
+void move_torre(int casas, char direcao[]) {
+    if (casas <=0) return;
+    printf("%s\n", direcao);
+    move_torre(casas - 1, direcao);
+}
+
+void move_bispo(int casas, char direcaov[], char direcaoh[]) {
+    if (casas <=0) return;
+    short parar = 1;
+
+    do {
+        printf("%s, ", direcaov);
+        do {
+            printf("%s\n", direcaoh);
+            parar = 0;
+        } while (parar);
+    } while (parar);
+
+    move_bispo(casas - 1, direcaov, direcaoh);
+}
+
+
+void move_rainha(int casas, char direcao[]) {
+    if (casas <=0) return;
+    printf("%s\n", direcao);
+    move_rainha(casas - 1, direcao);
 }
